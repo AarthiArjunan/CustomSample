@@ -46,10 +46,9 @@ namespace CheckingPurpose
         }
 
          private void TextBox_HandlerChanged(object? sender, EventArgs e) {
-                        if ((sender as Entry)?.Handler != null && (sender as Entry)?.Handler?.PlatformView is UIKit.UITextField macEntry) 
+
+            if ((sender as Entry)?.Handler != null && (sender as Entry)?.Handler?.PlatformView is UIKit.UITextField macEntry) 
             {
-                //macEntry.ShouldChangeCharacters += ValidateTextChanged;
-                //macEntry.BorderStyle = UITextBorderStyle.None;
                 macEntry.KeyboardType = UIKeyboardType.DecimalPad;
 
                 macEntry.EditingDidBegin += IOSEntry_EditingDidBegin;
@@ -57,11 +56,11 @@ namespace CheckingPurpose
             }
          }
 
-           private void IOSEntry_EditingDidBegin(object? sender, EventArgs e)
-  {
-      UITextField? macEntry = sender as UITextField;
-      if (macEntry!.InputAccessoryView == null) { macEntry.InputAccessoryView = this.toolbarView; }
-  }
+            private void IOSEntry_EditingDidBegin(object? sender, EventArgs e)
+            {
+                UITextField? macEntry = sender as UITextField;
+                if (macEntry!.InputAccessoryView == null) { macEntry.InputAccessoryView = this.toolbarView; }
+            }
 
             
 
@@ -69,12 +68,6 @@ namespace CheckingPurpose
         {
             this.AddToolBarItems();
         }
-
-        //protected override void OnCreateInputConnection(Android.Views.InputMethods.InputConnection inputConnection)
-        //{
-        //    base.OnCreateInputConnection(inputConnection);
-        //    AddToolBarItems();
-        //}
 
         private void AddToolBarItems()
         {
